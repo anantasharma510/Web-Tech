@@ -1,1 +1,405 @@
 
+Certainly! Here are five challenging HTML and CSS assignments along with their solutions:
+
+1. Create a Responsive Navigation Bar
+Assignment:
+Create a responsive navigation bar that adjusts its layout based on the screen size. On larger screens, the navigation links should be displayed horizontally. On smaller screens, the links should collapse into a hamburger menu.
+
+Solution:
+
+HTML:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Nav Bar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">MyLogo</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+  <script src="script.js"></script>
+</body>
+</html>
+CSS:
+
+css
+Copy code
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  padding: 0 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background: #333;
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+
+  .nav-links li {
+    padding: 20px;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+JavaScript:
+
+javascript
+Copy code
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('nav-active');
+});
+2. Build a CSS Grid Layout
+Assignment:
+Create a webpage layout using CSS Grid with a header, sidebar, main content area, and footer. The layout should adjust appropriately for different screen sizes.
+
+Solution:
+
+HTML:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Layout</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>Header</header>
+    <aside>Sidebar</aside>
+    <main>Main Content</main>
+    <footer>Footer</footer>
+  </div>
+</body>
+</html>
+CSS:
+
+css
+Copy code
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 200px 1fr;
+  height: 100vh;
+}
+
+header {
+  grid-area: header;
+  background: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+aside {
+  grid-area: sidebar;
+  background: #f4f4f4;
+  padding: 10px;
+}
+
+main {
+  grid-area: main;
+  background: #fff;
+  padding: 10px;
+}
+
+footer {
+  grid-area: footer;
+  background: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas: 
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    order: 1;
+  }
+}
+3. Create an Image Gallery with Flexbox
+Assignment:
+Create an image gallery using Flexbox. The gallery should display images in a grid layout that adjusts for different screen sizes.
+
+Solution:
+
+HTML:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Image Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="gallery">
+    <div class="gallery-item"><img src="image1.jpg" alt="Image 1"></div>
+    <div class="gallery-item"><img src="image2.jpg" alt="Image 2"></div>
+    <div class="gallery-item"><img src="image3.jpg" alt="Image 3"></div>
+    <div class="gallery-item"><img src="image4.jpg" alt="Image 4"></div>
+    <div class="gallery-item"><img src="image5.jpg" alt="Image 5"></div>
+  </div>
+</body>
+</html>
+CSS:
+
+css
+Copy code
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.gallery-item {
+  flex: 1 1 calc(33.333% - 20px);
+  margin: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .gallery-item {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item {
+    flex: 1 1 100%;
+  }
+}
+4. Build a Card Component
+Assignment:
+Create a reusable card component using HTML and CSS. The card should have a header, an image, some text, and a button. Ensure the card is responsive.
+
+Solution:
+
+HTML:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Component</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Card Title</h2>
+    <img src="image.jpg" alt="Card Image">
+    <p>This is some text inside the card.</p>
+    <button>Read More</button>
+  </div>
+</body>
+</html>
+CSS:
+
+css
+Copy code
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.card h2 {
+  background: #333;
+  color: white;
+  margin: 0;
+  padding: 15px;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card p {
+  padding: 15px;
+  color: #555;
+}
+
+.card button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.card button:hover {
+  background: #555;
+}
+5. Create a CSS Animation
+Assignment:
+Create a CSS animation for a loading spinner. The spinner should rotate continuously.
+
+Solution:
+
+HTML:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Spinner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="spinner"></div>
+</body>
+</html>
+CSS:
+
+css
+Copy code
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f4;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+These assignments cover a range of HTML and CSS topics, including responsive design, Flexbox, CSS Grid, component creation, and CSS animations. They are designed to challenge and enhance your skills in web development.
