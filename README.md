@@ -1,2 +1,2 @@
 # Web-Tech
-You can find important notes related web tech
+You can find important notes related html and css
